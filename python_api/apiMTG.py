@@ -93,8 +93,7 @@ def handle_card(cardName):
         card = dataCards.get(cardName)
         if not card:
             return f"Card '{cardName}' not found.", 404
-
-        # Formater une réponse textuelle lisible
+        
         response = f"{cardName}\n"
         for prop, value in card.items():
             response += f"{prop} : {value}\n"
