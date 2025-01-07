@@ -1,147 +1,155 @@
 {
-    "Blossoming Defense": {
-        "CCM": "{G}",
-        "color": "G",
-        "keywords": [
-            "hexproof"
-        ],
-        "type": "Instant",
-        "text": "Target creature you control gets +2/+2 and gains hexproof until end of turn."
-    },
-    "Spell Blast": {
-        "CCM": "{X}{U}",
-        "color": "U",
-        "keywords": [],
-        "type": "Instant",
-        "text": "Counter target spell with mana value X. (For example, if that spell\u2019s mana cost is {3}{U}{U}, X is 5.)"
-    },
-    "Orah, Skyclave Hierophant": {
-        "CCM": "{2}{W}{B}",
-        "color": "WB",
-        "keywords": [
-            "lifelink"
-        ],
-        "type": "Creature",
-        "text": " Lifelink, Whenever Orah, Skyclave Hierophant or another Cleric you control dies, return target Cleric card with lesser mana value from your graveyard to the battlefield."
-    },
-    "Senate Griffin": {
-        "CCM": "{2}{W/U}{W/U}",
-        "color": "UW",
-        "keywords": [
-            "flying",
-            "scry"
-        ],
-        "type": "Creature",
-        "text": "Flying, When Senate Griffin enters, scry 1."
-    },
-    "Python": {
-        "CCM": "{1}{B}{B}",
-        "color": "B",
-        "keywords": [],
-        "type": "Creature",
-        "text": ""
-    },
-    "Resurrection": {
-        "CCM": "{2}{W}{W}",
-        "color": "W",
-        "keywords": [],
-        "type": "Sorcery",
-        "text": "Return target creature card from your graveyard to the battlefield."
-    },
-    "Tsabo's Web": {
-        "CCM": "{2}",
-        "color": "I",
-        "keywords": [],
-        "type": "Artifact",
-        "text": "When Tsabo\u2019s Web enters, draw a card. Each land with an activated ability that isn\u2019t a mana ability doesn\u2019t untap during its controller\u2019s untap step."
-    },
-    "Essence Infusion": {
-        "CCM": "{1}{B}",
-        "color": "B",
-        "keywords": [
-            "lifelink"
-        ],
-        "type": "Sorcery",
-        "text": "Put two +1/+1 counters on target creature. It gains lifelink until end of turn."
-    },
-    "Somberwald Sage": {
-        "CCM": "{2}{G}",
-        "color": "G",
-        "keywords": [],
-        "type": "Creature",
-        "text": "{T} : Add three mana of any one color. Spend this mana only to cast creature spells."
-    },
-    "Vanquisher\u2019s Banner": {
-        "CCM": "{5}",
-        "color": "I",
-        "keywords": [],
-        "type": "Artifact",
-        "text": "As Vanquisher\u2019s Banner enters, choose a creature type. Creatures you control of the chosen type get +1/+1. Whenever you cast a creature spell of the chosen type, draw a card."
-    },
-    "Wall of Wonder": {
-        "CCM": "{2}{U}{U}",
-        "color": "U",
-        "keywords": [],
-        "type": "Creature",
-        "text": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card."
-    },
-    "Ponder": {
-        "CCM": "{U}",
-        "color": "U",
-        "keywords": [],
-        "type": "Sorcery",
-        "text": "Look at the top three cards of your library, then put them back in any order. You may shuffle. Draw a card."
-    },
-    "Duress": {
-        "Duress": {
-            "CCM": "{B}",
-            "color": "B",
-            "keywords": [],
-            "text": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.",
-            "type": "sorcery",
-            "legality": [
-                "Standard",
-                "Pioneer",
-                "Vintage",
-                "Modern"
-            ]
-        }
-    },
-    "Thopter Mechanic": {
-        "CCM": "{1}{U}",
-        "color": "U",
-        "keywords": [],
-        "text": "Whenever you draw your second card each turn, put a +1/+1 counter on Thopter Mechanic. When Thopter Mechanic dies, create a 1/1 colorless Thopter artifact creature token with flying.",
-        "type": "Creature"
-    },
-    "Thopter Arrest": {
-        "CCM": "{2}{W}",
-        "color": "W",
-        "keywords": [],
-        "text": "When Thopter Arrest enters, exile target artifact or creature an opponent controls until Thopter Arrest leaves the battlefield.",
-        "type": "Enchantment"
-    },
-    "Thopter Spy Network": {
-        "CCM": "{2}{U}{U}",
-        "color": "U",
-        "keywords": [],
-        "text": "At the beginning of your upkeep, if you control an artifact, create a 1/1 colorless Thopter artifact creature token with flying. Whenever one or more artifact creatures you control deal combat damage to a player, draw a card.",
-        "type": "Enchantment"
-    },
-    "Thopter Foundry": {
-        "CCM": "{W/B}{U}",
-        "color": "WBU",
-        "keywords": [],
-        "text": "{1}, Sacrifice a nontoken artifact: Create a 1/1 blue Thopter artifact creature token with flying. You gain 1 life.",
-        "type": "Artifact"
-    },
-    "Opt": {
-        "CCM": "{U}",
-        "color": "U",
-        "keywords": [
-            "scry"
-        ],
-        "text": "Scry 1. (Look at the top card of your library. You may put that card on the bottom.) Draw a card.",
-        "type": "instant"
-    }
+  "Blossoming Defense" : {
+    "ccm" : "{G}",
+    "CCM" : "{G}",
+    "color" : "G",
+    "keywords" : [ "hexproof" ],
+    "type" : "Instant",
+    "text" : "Target creature you control gets +2/+2 and gains hexproof until end of turn.",
+    "legality" : null
+  },
+  "Spell Blast" : {
+    "ccm" : "{X}{U}",
+    "CCM" : "{X}{U}",
+    "color" : "U",
+    "keywords" : [ ],
+    "type" : "Instant",
+    "text" : "Counter target spell with mana value X. (For example, if that spell’s mana cost is {3}{U}{U}, X is 5.)",
+    "legality" : null
+  },
+  "Orah, Skyclave Hierophant" : {
+    "ccm" : "{2}{W}{B}",
+    "CCM" : "{2}{W}{B}",
+    "color" : "WB",
+    "keywords" : [ "lifelink" ],
+    "type" : "Creature",
+    "text" : " Lifelink, Whenever Orah, Skyclave Hierophant or another Cleric you control dies, return target Cleric card with lesser mana value from your graveyard to the battlefield.",
+    "legality" : null
+  },
+  "Senate Griffin" : {
+    "ccm" : "{2}{W/U}{W/U}",
+    "CCM" : "{2}{W/U}{W/U}",
+    "color" : "UW",
+    "keywords" : [ "flying", "scry" ],
+    "type" : "Creature",
+    "text" : "Flying, When Senate Griffin enters, scry 1.",
+    "legality" : null
+  },
+  "Python" : {
+    "ccm" : "{1}{B}{B}",
+    "CCM" : "{1}{B}{B}",
+    "color" : "B",
+    "keywords" : [ ],
+    "type" : "Creature",
+    "text" : "",
+    "legality" : null
+  },
+  "Resurrection" : {
+    "ccm" : "{2}{W}{W}",
+    "CCM" : "{2}{W}{W}",
+    "color" : "W",
+    "keywords" : [ ],
+    "type" : "Sorcery",
+    "text" : "Return target creature card from your graveyard to the battlefield.",
+    "legality" : null
+  },
+  "Tsabo's Web" : {
+    "ccm" : "{2}",
+    "CCM" : "{2}",
+    "color" : "I",
+    "keywords" : [ ],
+    "type" : "Artifact",
+    "text" : "When Tsabo’s Web enters, draw a card. Each land with an activated ability that isn’t a mana ability doesn’t untap during its controller’s untap step.",
+    "legality" : null
+  },
+  "Essence Infusion" : {
+    "ccm" : "{1}{B}",
+    "CCM" : "{1}{B}",
+    "color" : "B",
+    "keywords" : [ "lifelink" ],
+    "type" : "Sorcery",
+    "text" : "Put two +1/+1 counters on target creature. It gains lifelink until end of turn.",
+    "legality" : null
+  },
+  "Somberwald Sage" : {
+    "ccm" : "{2}{G}",
+    "CCM" : "{2}{G}",
+    "color" : "G",
+    "keywords" : [ ],
+    "type" : "Creature",
+    "text" : "{T} : Add three mana of any one color. Spend this mana only to cast creature spells.",
+    "legality" : null
+  },
+  "Vanquisher’s Banner" : {
+    "ccm" : "{5}",
+    "CCM" : "{5}",
+    "color" : "I",
+    "keywords" : [ ],
+    "type" : "Artifact",
+    "text" : "As Vanquisher’s Banner enters, choose a creature type. Creatures you control of the chosen type get +1/+1. Whenever you cast a creature spell of the chosen type, draw a card.",
+    "legality" : null
+  },
+  "Wall of Wonder" : {
+    "ccm" : "{2}{U}{U}",
+    "CCM" : "{2}{U}{U}",
+    "color" : "U",
+    "keywords" : [ ],
+    "type" : "Creature",
+    "text" : "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.",
+    "legality" : null
+  },
+  "Ponder" : {
+    "ccm" : "{U}",
+    "CCM" : "{U}",
+    "color" : "U",
+    "keywords" : [ ],
+    "type" : "Sorcery",
+    "text" : "Look at the top three cards of your library, then put them back in any order. You may shuffle. Draw a card.",
+    "legality" : null
+  },
+  "Duress" : {
+    "ccm" : "{B}",
+    "CCM" : "{B}",
+    "color" : "B",
+    "keywords" : [ ],
+    "type" : "sorcery",
+    "text" : "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.",
+    "legality" : [ "Standard", "Pioneer", "Vintage", "Modern" ]
+  },
+  "Thopter Mechanic" : {
+    "ccm" : "{1}{U}",
+    "CCM" : "{1}{U}",
+    "color" : "U",
+    "keywords" : [ ],
+    "type" : "Creature",
+    "text" : "Whenever you draw your second card each turn, put a +1/+1 counter on Thopter Mechanic. When Thopter Mechanic dies, create a 1/1 colorless Thopter artifact creature token with flying.",
+    "legality" : null
+  },
+  "Thopter Arrest" : {
+    "ccm" : "{2}{W}",
+    "CCM" : "{2}{W}",
+    "color" : "W",
+    "keywords" : [ ],
+    "type" : "Enchantment",
+    "text" : "When Thopter Arrest enters, exile target artifact or creature an opponent controls until Thopter Arrest leaves the battlefield.",
+    "legality" : null
+  },
+  "Thopter Spy Network" : {
+    "ccm" : "{2}{U}{U}",
+    "CCM" : "{2}{U}{U}",
+    "color" : "U",
+    "keywords" : [ ],
+    "type" : "Enchantment",
+    "text" : "At the beginning of your upkeep, if you control an artifact, create a 1/1 colorless Thopter artifact creature token with flying. Whenever one or more artifact creatures you control deal combat damage to a player, draw a card.",
+    "legality" : null
+  },
+  "Thopter Foundry" : {
+    "ccm" : "{W/B}{U}",
+    "CCM" : "{W/B}{U}",
+    "color" : "WBU",
+    "keywords" : [ ],
+    "type" : "Artifact",
+    "text" : "{1}, Sacrifice a nontoken artifact: Create a 1/1 blue Thopter artifact creature token with flying. You gain 1 life.",
+    "legality" : null
+  }
 }

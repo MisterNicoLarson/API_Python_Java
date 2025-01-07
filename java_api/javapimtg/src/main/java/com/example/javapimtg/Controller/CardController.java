@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,6 +79,30 @@ public class CardController {
             cardMap.putAll(cards);
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
             return cards.keySet() + " has been added to the collection.";
+        } catch (Exception e) {
+            return e.toString();
+        }
+    }
+
+    /**
+     * Handles DELETE requests to remove a specified card from the collection.
+     *
+     * <p>This method reads the JSON file containing the card data, removes the specified card from the map,
+     * and writes the updated map back to the JSON file.</p>
+     *
+     * @param cards A map containing the card to be removed. The key is the card name, and the value is the Card object.
+     * @return A message indicating that the specified card has been removed from the collection.
+     */
+    @DeleteMapping
+    public String deleteSelectedCard(@RequestBody Map<String, Card> cards) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            for (String cardName : cards.keySet()) {
+                cardMap.remove(cardName);
+            }
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
+            return cards.keySet() + " has been removed from the collection.";
         } catch (Exception e) {
             return e.toString();
         }
