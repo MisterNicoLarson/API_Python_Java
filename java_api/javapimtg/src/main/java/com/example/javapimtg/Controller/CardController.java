@@ -4,12 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -224,6 +228,53 @@ public class CardController {
             
         } catch (IOException e) {
             return e.toString();
+        }
+    }
+
+    /**
+     * Searches for cards based on the given characteristics.
+     *
+     * @param ccm The converted mana cost (ccm) to search for (optional).
+     * @param CCM The mana cost (CCM) to search for (optional).
+     * @param color The color of the card to search for (optional).
+     * @param keywords The keywords of the card to search for (optional).
+     * @param type The type of the card to search for (optional).
+     * @param text The text of the card to search for (optional).
+     * @param legality The legality of the card to search for (optional).
+     * @return A string containing the names of the matching cards, or a message indicating that no cards were found.
+     */
+    @GetMapping("/search")
+    public String searchCards(
+            @RequestParam(required = false) String CCM,
+            @RequestParam(required = false) String color,
+            @RequestParam(required = false) String keywords,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String text,
+            @RequestParam(required = false) String legality) {
+                
+        ObjectMapper objectMapper = new ObjectMapper();
+        logger.info("Searching for cards with the following characteristics: ccm={}, CCM={}, color={}, keywords={}, type={}, text={}, legality={}",
+                    CCM, color, keywords, type, text, legality);
+
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            List<String> matchingCardNames = cardMap.entrySet().stream()
+                    .filter(entry ->(CCM == null || entry.getValue().getCCM().equalsIgnoreCase(CCM)) &&
+                                    (color == null || entry.getValue().getColor().equalsIgnoreCase(color)) &&
+                                    (keywords == null || entry.getValue().getKeywords().contains(keywords)) &&
+                                    (type == null || entry.getValue().getType().equalsIgnoreCase(type)) &&
+                                    (text == null || entry.getValue().getText().contains(text)) &&
+                                    (legality == null || entry.getValue().getLegality() != null && entry.getValue().getLegality().contains(legality)))
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            if (!matchingCardNames.isEmpty()) {
+                return "Matching cards: " + String.join(", ", matchingCardNames);
+            } else {
+                return "No cards found with the specified characteristics.";
+            }
+        } catch (IOException e) {
+            return "An error occurred while searching for cards: " + e.getMessage();
         }
     }
 }

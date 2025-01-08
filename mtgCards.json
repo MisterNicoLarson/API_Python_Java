@@ -157,7 +157,7 @@
     "CCM" : "{2}{W}",
     "color" : "W",
     "keywords" : [ "coven" ],
-    "type" : "creature",
+    "type" : "Creature",
     "text" : "Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, Ritual Guardian gains lifelink until end of turn.",
     "legality" : [ "Standard", "Pioneer", "Vintage", "Modern" ]
   }
