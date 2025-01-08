@@ -20,6 +20,9 @@ import com.example.javapimtg.Model.Card;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * CardController is a REST controller for managing card data.
  *
@@ -39,6 +42,7 @@ public class CardController {
     private static Path folderPath = Paths.get("mtgCards.json").toAbsolutePath().normalize();
     private static String pathJSON = folderPath.toString();
     private static File jsonFile = new File(pathJSON);
+    private static final Logger logger = LoggerFactory.getLogger(CardController.class);
 
     /**
      * Handles GET requests to return a list of all cards with their properties.
@@ -111,6 +115,12 @@ public class CardController {
         }
     }
 
+    /**
+     * Retrieves the details of a card by its name.
+     *
+     * @param cardName The name of the card to retrieve.
+     * @return A string containing the details of the card if found, or a message indicating that the card is not in the API.
+     */
     @GetMapping("/{cardName}")
     public String getCard(@PathVariable String cardName) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -131,15 +141,26 @@ public class CardController {
         }
     }
 
+    /**
+     * Updates the details of a card by its name.
+     *
+     * @param cardName The name of the card to update.
+     * @param card The updated card details.
+     * @return A message indicating whether the card was successfully updated or not found.
+     */
     @PutMapping("/{cardName}")
     public String updateCard(@PathVariable String cardName, @RequestBody Card card) {
         ObjectMapper objectMapper = new ObjectMapper();
+        logger.info("Received PATCH request for card: {}", cardName);
+        logger.info("Request body: {}", card);
+
         try {
             Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
-            StringBuilder lCardString = new StringBuilder();
             Card cardToUpdate = cardMap.get(cardName);
             if(cardToUpdate != null){
-                lCardString.append("Name: ").append(cardName).append(",\nDetails: ").append(card).append("\n\n");
+                cardMap.remove(cardName);
+                cardMap.put(cardName, card);
+                objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
                 return cardName + " has been update.";
             }
             else{
@@ -150,15 +171,26 @@ public class CardController {
         }
     }
 
+    /**
+     * Updates the details of a card by its name.
+     *
+     * @param cardName The name of the card to update.
+     * @param card The updated card details.
+     * @return A message indicating whether the card was successfully updated or not found.
+     */
     @PatchMapping("/{cardName}")
     public String patchCard(@PathVariable String cardName, @RequestBody Card card) {
         ObjectMapper objectMapper = new ObjectMapper();
+        logger.info("Received PATCH request for card: {}", cardName);
+        logger.info("Request body: {}", card);
+
         try {
             Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
-            StringBuilder lCardString = new StringBuilder();
             Card cardToUpdate = cardMap.get(cardName);
             if(cardToUpdate != null){
-                lCardString.append("Name: ").append(cardName).append(",\nDetails: ").append(card).append("\n\n");
+                cardMap.remove(cardName);
+                cardMap.put(cardName, card);
+                objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
                 return cardName + " has been update.";
             }
             else{
@@ -169,6 +201,12 @@ public class CardController {
         }
     }
 
+    /**
+     * Removes a card by its name.
+     *
+     * @param cardName The name of the card to remove.
+     * @return A message indicating whether the card was successfully removed or not found.
+     */
     @DeleteMapping("/{cardName}")
     public String removeCard(@PathVariable String cardName) {
         ObjectMapper objectMapper = new ObjectMapper();

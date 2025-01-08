@@ -151,5 +151,14 @@
     "type" : "Artifact",
     "text" : "{1}, Sacrifice a nontoken artifact: Create a 1/1 blue Thopter artifact creature token with flying. You gain 1 life.",
     "legality" : null
+  },
+  "Ritual Guardian" : {
+    "ccm" : "{2}{W}",
+    "CCM" : "{2}{W}",
+    "color" : "W",
+    "keywords" : [ "coven" ],
+    "type" : "creature",
+    "text" : "Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, Ritual Guardian gains lifelink until end of turn.",
+    "legality" : [ "Standard", "Pioneer", "Vintage", "Modern" ]
   }
 }
