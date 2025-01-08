@@ -8,7 +8,10 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -104,6 +107,84 @@ public class CardController {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
             return cards.keySet() + " has been removed from the collection.";
         } catch (Exception e) {
+            return e.toString();
+        }
+    }
+
+    @GetMapping("/{cardName}")
+    public String getCard(@PathVariable String cardName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            StringBuilder lCardString = new StringBuilder();
+            Card card = cardMap.get(cardName);
+            if(card != null){
+                lCardString.append("Name: ").append(cardName).append(",\nDetails: ").append(card).append("\n\n");
+                return lCardString.toString();
+            }
+            else{
+                return "The card isn't in the API.";
+            }
+            
+        } catch (IOException e) {
+            return e.toString();
+        }
+    }
+
+    @PutMapping("/{cardName}")
+    public String updateCard(@PathVariable String cardName, @RequestBody Card card) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            StringBuilder lCardString = new StringBuilder();
+            Card cardToUpdate = cardMap.get(cardName);
+            if(cardToUpdate != null){
+                lCardString.append("Name: ").append(cardName).append(",\nDetails: ").append(card).append("\n\n");
+                return cardName + " has been update.";
+            }
+            else{
+                return "The card isn't in the API.";
+            }
+        } catch (IOException e) {
+            return e.toString();
+        }
+    }
+
+    @PatchMapping("/{cardName}")
+    public String patchCard(@PathVariable String cardName, @RequestBody Card card) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            StringBuilder lCardString = new StringBuilder();
+            Card cardToUpdate = cardMap.get(cardName);
+            if(cardToUpdate != null){
+                lCardString.append("Name: ").append(cardName).append(",\nDetails: ").append(card).append("\n\n");
+                return cardName + " has been update.";
+            }
+            else{
+                return "The card isn't in the API.";
+            }
+        } catch (IOException e) {
+            return e.toString();
+        }
+    }
+
+    @DeleteMapping("/{cardName}")
+    public String removeCard(@PathVariable String cardName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
+            Card card = cardMap.get(cardName);
+            if(card != null){
+                cardMap.remove(cardName);
+                objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
+                return cardName + " has been removed from the API.";
+            }
+            else{
+                return "The card isn't in the API.";
+            }
+            
+        } catch (IOException e) {
             return e.toString();
         }
     }
