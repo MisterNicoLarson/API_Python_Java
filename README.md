@@ -16,6 +16,6 @@ For Java, I use the Maven project manager to streamline dependency management an
 To make and test API requests, I use Postman, a versatile tool designed for building, testing, and documenting APIs. It allows me to easily configure and send requests (GET, POST, PUT, DELETE, etc.), inspect responses, and debug any issues in real-time. With its user-friendly interface and powerful features like collections and automated testing, Postman streamlines the development and validation of REST APIs.
 
 ## Reference 
- - HTTP REquest documentation : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH \n
+ - HTTP REquest documentation : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH 
  - Flask : https://flask.palletsprojects.com/en/stable/
  - Springboot : https://docs.spring.io/spring-restdocs/docs/3.0.4-SNAPSHOT/reference/htmlsingle/#introduction
