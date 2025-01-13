@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.javapimtg.Model.Card;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -102,20 +102,21 @@ public class CardController {
      * and writes the updated map back to the JSON file.</p>
      *
      * @param cards A map containing the card to be removed. The key is the card name, and the value is the Card object.
-     * @return A message indicating that the specified card has been removed from the collection.
+     * @return A message indicating that the specified card has been removed from the collection or an error message.
      */
     @DeleteMapping
     public String deleteSelectedCard(@RequestBody Map<String, Card> cards) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             Map<String, Card> cardMap = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Card>>() {});
-            for (String cardName : cards.keySet()) {
-                cardMap.remove(cardName);
-            }
+
+            cards.keySet().forEach(cardMap::remove);
+
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, cardMap);
+
             return cards.keySet() + " has been removed from the collection.";
         } catch (Exception e) {
-            return e.toString();
+            return "Error: " + e.getMessage();
         }
     }
 

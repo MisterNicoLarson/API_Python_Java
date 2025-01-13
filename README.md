@@ -13,9 +13,10 @@ I use the Flask library because it is lightweight, flexible, and easy to set up,
 For Java, I use the Maven project manager to streamline dependency management and build processes, ensuring efficient and organized development. To create REST APIs, I rely on the Spring Framework, which provides powerful tools like Spring Boot for rapid application setup and Spring MVC for building robust and scalable RESTful services. This combination allows for clean, modular, and maintainable code, perfectly suited for enterprise-grade applications.
 
 ## Postman
-To make and test API requests, I use Postman, a versatile tool designed for building, testing, and documenting APIs. It allows me to easily configure and send requests (GET, POST, PUT, DELETE, etc.), inspect responses, and debug any issues in real-time. With its user-friendly interface and powerful features like collections and automated testing, Postman streamlines the development and validation of REST APIs.
+Postman is a popular tool for testing APIs by making requests to the server and analyzing the responses. It is particularly useful for developers and testers when building, testing, or debugging RESTful APIs.
 
 ## Reference 
- - HTTP REquest documentation : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH 
+ - HTTP request documentation : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/
+ - FASTAPI : https://fastapi.tiangolo.com/
  - Flask : https://flask.palletsprojects.com/en/stable/
  - Springboot : https://docs.spring.io/spring-restdocs/docs/3.0.4-SNAPSHOT/reference/htmlsingle/#introduction

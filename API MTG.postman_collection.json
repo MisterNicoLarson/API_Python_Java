@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "c70fa6d6-ed44-4a07-96c8-e48e61f99786",
+		"name": "API MTG",
+		"description": "This Postman collection was made to test my APIs: Python Flask and FASTAPI as well as my java-springboot api.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22335839"
+	},
+	"item": [
+		{
+			"name": "POST - New Card - Python",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "bob",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "fr,en",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Niv-Mizzet Reborn\",\r\n    \"details\": {\r\n        \"CCM\": \"{W}{U}{B}{R}{G}\", \r\n        \"ccm\": \"{W}{U}{B}{R}{G}\",\r\n        \"color\": \"WUBRG\", \r\n        \"keyword\": [\"flying\"], \r\n        \"text\": \"Flying. When Niv-Mizzet Reborn enters, reveal the top ten cards of your library. For each color pair, choose a card that’s exactly those colors from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\", \r\n        \"type\": \"Creature\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - New Card - Python - FAST API",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "bob",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "fr,en",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Niv-Mizzet Reborn\",\r\n    \"details\": {\r\n        \"CCM\": \"{W}{U}{B}{R}{G}\", \r\n        \"ccm\": \"{W}{U}{B}{R}{G}\",\r\n        \"color\": \"WUBRG\", \r\n        \"keyword\": [\"flying\"], \r\n        \"text\": \"Flying. When Niv-Mizzet Reborn enters, reveal the top ten cards of your library. For each color pair, choose a card that’s exactly those colors from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\", \r\n        \"type\": \"Creature\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Show all cards - Python",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - A card - Python",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards/Somberwald Sage"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - A card - Python",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Opt\":{}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT / PATCH - A card - Python",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Duress\" : {\r\n        \"CCM\": \"{B}\", \r\n        \"color\": \"B\", \r\n        \"keywords\": [], \r\n        \"text\": \"Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.\", \r\n        \"type\": \"sorcery\",\r\n        \"legality\" : [\"Standard\",\"Pioneer\",\"Vintage\",\"Modern\"]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards/Duress"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - search - Python",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "key123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/cards/search?color=G",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"cards",
+						"search"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "G"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Welcome - Java",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:5000/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Cards - Java",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "POST - New Card - Java",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Ritual Guardian\" : {\r\n        \"CCM\": \"{2}{W}\", \r\n        \"color\": \"W\", \r\n        \"keywords\": [\"coven\"], \r\n        \"text\": \"Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, Ritual Guardian gains lifelink until end of turn.\", \r\n        \"type\": \"creature\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Selected Card - Java",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Opt\":{}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards"
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Single Card - Java",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:5000/cards/Duress"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Single Card - Java",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "127.0.0.1:5000/cards/Ritual Guardian"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Modify a single card - Java",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CCM\": \"{2}{W}\", \r\n    \"color\": \"W\", \r\n    \"keywords\": [\"coven\"], \r\n    \"text\": \"Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, Ritual Guardian gains lifelink until end of turn.\", \r\n    \"type\": \"creature\",\r\n    \"legality\" : [\"Standard\",\"Pioneer\",\"Vintage\",\"Modern\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:5000/cards/Ritual Guardian"
+			},
+			"response": []
+		}
+	]
+}

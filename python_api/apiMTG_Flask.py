@@ -1,5 +1,69 @@
+"""
+Flask Application for Managing MTG Cards
+
+This Flask application provides a RESTful API for managing a collection of Magic: The Gathering (MTG) cards.
+The application supports various operations such as retrieving, adding, updating, and deleting card information.
+It also includes advanced search functionality and request authentication using API keys.
+
+Modules:
+    flask: The web framework used to create the application.
+    json: Used for loading and saving card data to a JSON file.
+
+Functions:
+    load_cards() -> dict:
+        Loads cards from a JSON file.
+
+    save_cards(data: dict) -> None:
+        Saves the card data to a JSON file.
+
+    welcome_route() -> str:
+        Handles the root route of the web application.
+
+    authenticate_request() -> tuple:
+        Authenticates the request using an API key.
+
+    handle_card(cardName: str) -> tuple:
+        Handles requests for a specific card.
+
+    handle_cards() -> tuple:
+        Handles requests for managing cards.
+
+    handle_advanced_search() -> tuple:
+        Handles advanced search requests for cards.
+
+    log_request_info() -> None:
+        Logs detailed information about each incoming request.
+
+Routes:
+    /:
+        GET: Returns a welcome message with the client's IP and User-Agent.
+
+    /cards/<string:cardName>:
+        GET: Retrieves the details of a specific card.
+        PUT: Updates the details of a specific card.
+        PATCH: Partially updates the details of a specific card.
+
+    /cards:
+        GET: Retrieves a list of all cards with their properties.
+        POST: Adds a new card with the provided JSON data.
+        DELETE: Removes a specified card.
+
+    /cards/search:
+        GET: Searches for cards based on various criteria such as name, type, color, and keywords.
+
+Attributes:
+    app: The Flask application instance.
+    path_json_dict: The path to the JSON file containing the card data.
+    dataCards: The dictionary containing the loaded card data.
+    API_KEYS: A dictionary of valid API keys for authentication.
+
+Usage:
+    Run the script to start the Flask application. The application will be accessible at http://0.0.0.0:5000.
+"""
+
 from flask import Flask, request, jsonify
 import json
+
 
 app = Flask(__name__)
 
