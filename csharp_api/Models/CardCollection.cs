@@ -1,4 +1,4 @@
-namespace csharp_api.Models; 
+namespace csharp_api.Models;
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,20 @@ public class CardCollection
     public Dictionary<string, Card> Cards { get; set; } = new Dictionary<string, Card>();
 
     /// <summary>
+    /// Default constructor initializing an empty collection.
+    /// </summary>
+    public CardCollection() { }
+
+    /// <summary>
+    /// Constructor that initializes the collection from a JSON file.
+    /// </summary>
+    /// <param name="filePath">The path to the JSON file.</param>
+    public CardCollection(string filePath)
+    {
+        Cards = ReadJsonFile(filePath);
+    }
+
+    /// <summary>
     /// Reads a JSON file and deserializes it into a dictionary of cards.
     /// </summary>
     /// <param name="filePath">The path to the JSON file.</param>
@@ -28,6 +42,6 @@ public class CardCollection
         }
 
         string text = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<Dictionary<string, Card>>(text);
+        return JsonSerializer.Deserialize<Dictionary<string, Card>>(text) ?? new Dictionary<string, Card>();
     }
 }

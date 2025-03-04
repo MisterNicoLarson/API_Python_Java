@@ -6,28 +6,49 @@ using csharp_api.Models;
 [Route("api/cards")]
 public class CardController : ControllerBase
 {
-    private readonly string _filePath = "mtgCardCopy.json";
+    private readonly string _filePath;
     private readonly CardCollection _cardCollection;
 
     public CardController()
     {
-        _cardCollection = new CardCollection();
+        _filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())?.FullName ?? "", "mtgCards.json");
+
+        if (System.IO.File.Exists(_filePath))
+        {
+            _cardCollection = new CardCollection(_filePath);
+        }
+        else
+        {
+            _cardCollection = new CardCollection(); // Collection vide si le fichier n'existe pas
+        }
     }
 
     /// <summary>
-    /// Gets the list of cards from the JSON file.
+    /// Gets the list of all cards from the JSON file.
     /// </summary>
     [HttpGet]
     public ActionResult<CardCollection> GetCardsList()
     {
-        var fullFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, _filePath);
-
-        if (!System.IO.File.Exists(fullFilePath))
+        if (_cardCollection.Cards.Count == 0)
         {
-            return NotFound("File not found.");
+            return NotFound("No cards found.");
         }
 
-        var cardCollection = CardCollection.ReadJsonFile(fullFilePath);
-        return Ok(cardCollection);
+        return Ok(_cardCollection);
+    }
+
+    /// <summary>
+    /// Gets a specific card by name.
+    /// </summary>
+    /// <param name="cardName">The name of the card.</param>
+    [HttpGet("{cardName}")]
+    public ActionResult<Card> GetCardByName(string cardName)
+    {
+        if (_cardCollection.Cards.TryGetValue(cardName, out var card))
+        {
+            return Ok(card);
+        }
+
+        return NotFound($"Card '{cardName}' not found.");
     }
 }
